@@ -1,8 +1,12 @@
 spring:
+  flyway:
+    # Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration$FlywayConfiguration.class]: Invocation of init method failed; nested exception is org.flywaydb.core.api.FlywayException: Found non-empty schema(s) `vhr` but no schema history table. Use baseline() or set baselineOnMigrate to true to initialize the schema history table.
+    # https://github.com/lenve/vhr/issues/190
+    enabled: false
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     username: root
-    password: 123
+    password: "00000000"
     url: jdbc:mysql://localhost:3306/vhr?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
   rabbitmq:
     username: guest
@@ -14,7 +18,7 @@ spring:
     host: 127.0.0.1
     database: 0
     port: 6379
-    password: 123
+    password: jinyx-redis
   cache:
     cache-names: menus_cache
 server:
